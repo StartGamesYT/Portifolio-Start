@@ -1,0 +1,359 @@
+/* --- Paleta de Cores e Configurações Globais (TEMA DARK) --- */
+:root {
+    /* CORES ATUALIZADAS PARA O TEMA DARK */
+    --background-main: #211f1e;      /* Quase preto, o novo fundo principal */
+    --background-secondary: #312d2a; /* Grafite, para cards e seções secundárias */
+    --text-main: #f0d9c4;             /* Bege claro, a nova cor principal do texto */
+    --text-secondary: #b89682;       /* Tom de pele/sombra, para texto menos importante */
+    --primary-accent: #d4ac7c;        /* Dourado, agora o principal destaque para botões e títulos */
+    --primary-hover: #9c6b4a;         /* Marrom dos olhos, agora a cor para hover */
+    
+    --shadow-color-rgba: rgba(0, 0, 0, 0.2); /* Sombra mais escura e genérica */
+
+    /* Fontes (permanecem as mesmas) */
+    --font-heading: 'Playfair Display', serif;
+    --font-body: 'Montserrat', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-body);
+    line-height: 1.7;
+    background-color: var(--background-main); /* FUNDO PRINCIPAL DARK */
+    color: var(--text-main); /* TEXTO PRINCIPAL CLARO */
+}
+
+.container {
+    max-width: 1100px;
+    margin: auto;
+    overflow: hidden;
+    padding: 0 2rem;
+}
+
+h1,h2,h3 {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+h2 {
+    font-size: 3rem;
+    text-align: center;
+    margin-bottom: 3rem;
+    color: var(--primary-accent); /* Títulos com a cor de destaque dourada */
+}
+
+/* --- Cabeçalho e Navegação --- */
+header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    transition: background-color 0.4s ease, box-shadow 0.4s ease;
+    padding: 1rem 0;
+    background-color: transparent; /* Começa transparente */
+}
+
+header.scrolled {
+    background-color: rgba(33, 31, 30, 0.85); /* Fundo dark semi-transparente ao rolar */
+    backdrop-filter: blur(10px);
+    box-shadow: 0 2px 10px var(--shadow-color-rgba);
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header .logo {
+    font-family: var(--font-heading);
+    font-size: 1.8rem;
+    color: var(--primary-accent);
+    z-index: 10;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+}
+
+nav ul li {
+    margin-left: 25px;
+}
+
+nav a {
+    text-decoration: none;
+    color: var(--text-main); /* Texto do menu claro */
+    font-weight: 600;
+    position: relative;
+    padding: 5px 0;
+    transition: color 0.3s ease;
+}
+
+nav a:hover {
+    color: var(--primary-accent);
+}
+
+nav a.active {
+    color: var(--primary-accent);
+}
+
+nav a.active::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: var(--primary-accent);
+    bottom: 0;
+    left: 0;
+}
+
+/* --- Menu Hambúrguer (Mobile) --- */
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 30px;
+    height: 25px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 10;
+}
+
+.menu-toggle .bar {
+    width: 100%;
+    height: 3px;
+    background-color: var(--text-main); /* Barras do menu claras */
+    border-radius: 10px;
+    transition: all 0.3s ease-in-out;
+}
+
+.menu-toggle.is-active .bar:nth-child(1) { transform: translateY(11px) rotate(45deg); }
+.menu-toggle.is-active .bar:nth-child(2) { opacity: 0; }
+.menu-toggle.is-active .bar:nth-child(3) { transform: translateY(-11px) rotate(-45deg); }
+
+/* --- Seções --- */
+main {
+    padding-top: 80px;
+}
+
+section {
+    padding: 5rem 0;
+}
+
+section#sobre {
+    background-color: var(--background-secondary); /* Seção 'Sobre' com fundo secundário */
+}
+
+/* --- Hero --- */
+#hero {
+    min-height: 90vh;
+    display: flex;
+    align-items: center;
+}
+.hero-content { display: flex; justify-content: space-between; align-items: center; gap: 2rem; }
+.hero-text h1 { font-size: 4rem; margin-bottom: 1rem; }
+.hero-text p { color: var(--text-secondary); } /* Parágrafo com cor secundária */
+.hero-image img { max-width: 350px; border-radius: 50%; border: 5px solid var(--primary-accent); box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
+
+/* --- Botão Principal --- */
+.btn {
+    display: inline-block;
+    background: var(--primary-accent);
+    color: var(--background-main); /* Texto escuro no botão para contraste */
+    padding: 14px 28px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    margin-top: 1rem;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.btn:hover {
+    background: var(--primary-hover);
+    color: #fff;
+    transform: translateY(-3px);
+    box-shadow: 0 7px 20px rgba(0,0,0,0.3);
+}
+
+/* --- Habilidades --- */
+.skills-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; }
+.skill-item { background: var(--background-secondary); color: var(--text-secondary); border: 1px solid var(--text-secondary); padding: 10px 20px; border-radius: 20px; font-weight: 600; }
+
+/* --- Portfólio --- */
+.portfolio-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; }
+.portfolio-card {
+    background: var(--background-secondary); /* Fundo secundário para os cards */
+    color: var(--text-main);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    border: 1px solid #444; /* Borda sutil */
+}
+.portfolio-card:hover { transform: translateY(-8px) scale(1.02); border-color: var(--primary-accent); }
+.portfolio-card img { width: 100%; display: block; opacity: 0.8; }
+.card-content { padding: 1.5rem; }
+.card-content h3 { color: var(--primary-accent); margin-bottom: 0.5rem; }
+.card-content p { color: var(--text-secondary); }
+.btn-card { display: inline-block; margin-top: 1rem; text-decoration: none; color: var(--primary-accent); font-weight: 600; }
+
+/* --- Animação e Footer --- */
+footer { text-align: center; padding: 2.5rem 0; background: var(--background-main); border-top: 1px solid #444; color: var(--text-secondary); margin-top: 3rem; }
+.fade-in { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
+.fade-in.is-visible { opacity: 1; transform: translateY(0); }
+
+/* --- Responsividade --- */
+@media (max-width: 768px) {
+    nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background-color: rgba(33, 31, 30, 0.98); /* Fundo do menu mobile dark */
+        backdrop-filter: blur(5px);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transform: translateX(100%);
+        transition: transform 0.4s cubic-bezier(0.77, 0, 0.175, 1);
+    }
+    nav.is-active { transform: translateX(0); }
+    .menu-toggle { display: flex; }
+    h2 { font-size: 2.5rem; }
+    .hero-content { flex-direction: column; text-align: center; }
+    nav ul { flex-direction: column; text-align: center; }
+    nav ul li { margin: 20px 0; }
+    nav a { font-size: 2rem; }
+    .hero-text { order: 2; }
+    .hero-image { order: 1; margin-bottom: 2rem; }
+    .hero-image img { width: 250px; }
+}
+
+/* --- ESTILOS ADICIONAIS PARA 'SOBRE' E 'HABILIDADES' --- */
+
+/* --- Seção Sobre Mim Melhorada --- */
+.about-content {
+    display: grid;
+    grid-template-columns: 1fr 2fr; /* Layout de 1/3 para imagem, 2/3 para texto */
+    gap: 3rem;
+    align-items: center;
+    margin-top: 2rem;
+}
+
+.about-image img {
+    width: 100%;
+    max-width: 350px;
+    border-radius: 10px;
+    border: 3px solid var(--primary-hover);
+}
+
+.about-text h3 {
+    font-family: var(--font-body); /* Usando a fonte do corpo para um subtítulo */
+    font-weight: 600;
+    font-size: 1.5rem;
+    color: var(--text-main);
+    margin-bottom: 1rem;
+}
+
+.about-text p {
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+}
+
+.about-list {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 2rem;
+}
+
+.about-list li {
+    color: var(--text-main);
+    margin-bottom: 0.5rem;
+}
+
+.about-list i {
+    color: var(--primary-accent); /* Ícone de 'check' com a cor de destaque */
+    margin-right: 10px;
+}
+
+/* --- Seção de Habilidades Melhorada --- */
+.skills-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.skill-category {
+    background-color: var(--background-secondary);
+    padding: 2rem;
+    border-radius: 10px;
+    border: 1px solid #444;
+    transition: all 0.3s ease;
+}
+
+.skill-category:hover {
+    border-color: var(--primary-accent);
+    transform: translateY(-5px);
+}
+
+.skill-category h4 {
+    font-family: var(--font-body);
+    font-size: 1.2rem;
+    color: var(--primary-accent);
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid #555;
+    padding-bottom: 0.75rem;
+}
+
+.skill-category h4 i {
+    margin-right: 10px;
+}
+
+.skill-category ul {
+    list-style: none;
+    padding: 0;
+}
+
+.skill-category li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+    color: var(--text-secondary);
+    font-weight: 600;
+}
+
+.skill-category li i {
+    font-size: 1.5rem;
+    margin-right: 15px;
+    width: 30px; /* Alinha o texto mesmo com ícones de larguras diferentes */
+    text-align: center;
+    color: var(--text-main);
+}
+
+
+/* --- Ajustes Responsivos para as Novas Seções --- */
+@media (max-width: 768px) {
+    .about-content {
+        grid-template-columns: 1fr; /* Coluna única no mobile */
+        text-align: center;
+    }
+    
+    .about-image {
+        margin-bottom: 2rem;
+    }
+}
